@@ -4,16 +4,47 @@ import './App.css';
 import Rachid from './Rachid';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Rachid",
+      email: "marcosrachid@gmail.com"
+    };
+    this.resetState = this.resetState.bind(this);
+    this.changeInput = this.changeInput.bind(this);
+  }
+
+  resetState() {
+    this.setState({
+      name: "Rachid",
+      email: "marcosrachid@gmail.com"
+    })
+  }
+
+  changeInput(event) {
+    let target = event.target;
+    let index = target.name;
+    this.setState({
+      [index] : target.value
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Meu projeto em React
-          </p>
-          <Rachid></Rachid>
-        </header>
+        <div>
+          <form>
+            <label>Nome
+              <input type="text" name="name" value={this.state.name} onChange={this.changeInput}></input>
+            </label>
+            <label>Email
+              <input type="text" name="email" value={this.state.email} onChange={this.changeInput}></input>
+            </label>
+          </form>
+          {this.state.name} - {this.state.email}
+        </div>
+        <button onClick={this.resetState}>Reseta estado</button>
       </div>
     );
   }
