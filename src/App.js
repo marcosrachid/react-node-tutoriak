@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Rachid from './Rachid';
+import List from './List';
 
 class App extends Component {
 
@@ -45,6 +46,7 @@ class App extends Component {
           {this.state.name} - {this.state.email}
         </div>
         <button onClick={this.resetState}>Reseta estado</button>
+        <List></List>
       </div>
     );
   }
